@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Volleystrike is the official hybrid football + volleyball league site with team match predictions, highlight animations, and live fan mode." />
+  <title>Volleystrike | Hybrid Sport League</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="glow-ring"></div>
+    <header class="topbar">
+      <div class="brand">
+        <span class="crest">V</span>
+        <div>
+          <h1>Volleystrike</h1>
+          <p>Hybrid sport league. Football speed. Volleyball flair.</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#teams">Teams</a>
+        <a href="#predictor">Predictor</a>
+        <a href="#chat">Chat</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#standings">Standings</a>
+        <a href="#fanzone">Fan Zone</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Welcome to the Arena</span>
+          <h2>Volleystrike: The ultimate football-volleyball fusion</h2>
+          <p>Support your favourite club, simulate rivalries, and let AI forecast the next matchup. The best team is Jamaica College, led by Zak Matthews.</p>
+          <div class="hero-buttons">
+            <button class="primary" data-target="#teams">Explore Teams</button>
+            <button class="secondary" id="startPrediction">Predict a Match</button>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <h3>12 Teams</h3>
+            <p>Each styled with unique team colors and rosters.</p>
+          </div>
+          <div class="stat-card">
+            <h3>AI Predictor</h3>
+            <p>Smart match forecasts powered by Volleystrike analytics.</p>
+          </div>
+          <div class="stat-card">
+            <h3>Fan Pulse</h3>
+            <p>Real-time cheering and fan voting bring the stadium to life.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-panel" id="teams">
+        <div class="section-title">
+          <span>Teams</span>
+          <h2>Meet the 12 Volleystrike clubs</h2>
+          <p>Each club brings its own style, colors, and star lineup to the court.</p>
+        </div>
+        <div class="team-grid" id="teamGrid"></div>
+      </section>
+
+      <section class="section-panel fan-zone" id="fanzone">
+        <div class="section-title">
+          <span>Fan Zone</span>
+          <h2>Choose your team and root with pride</h2>
+        </div>
+        <div class="fancard fan-grid">
+          <div class="fan-panel">
+            <div>
+              <label for="favoriteTeam">Select your favourite team:</label>
+              <select id="favoriteTeam"></select>
+            </div>
+            <div class="favorite-card" id="favoriteCard">
+              <div class="favorite-badge">No team selected yet</div>
+            </div>
+          </div>
+          <div class="fan-panel">
+            <div class="login-card" id="loginCard">
+              <h3>Fan login</h3>
+              <p class="login-status" id="loginStatus">Not signed in</p>
+              <div class="premium-banner" id="premiumBanner">
+                <strong>Free Premium Month</strong> unlocked on sign-in. Chat, badges, and rewards are active for now.
+              </div>
+              <div class="login-form" id="loginForm">
+                <input id="loginName" type="text" placeholder="Fan nickname" autocomplete="off" />
+                <input id="loginEmail" type="email" placeholder="Email address" autocomplete="off" />
+                <input id="loginPassword" type="password" placeholder="Password" autocomplete="off" />
+                <button class="secondary" id="loginButton">Sign in</button>
+                <button class="secondary" id="logoutButton">Sign out</button>
+              </div>
+              <div class="login-methods" id="loginMethods">
+                <button class="social-login" data-method="Google">Sign in with Google</button>
+                <button class="social-login" data-method="Twitter">Sign in with Twitter</button>
+              </div>
+              <div class="badge-panel">
+                <div class="badge-item">
+                  <span class="badge-label">Streak</span>
+                  <strong id="streakCount">0 days</strong>
+                </div>
+                <div class="badge-item">
+                  <span class="badge-label">Premium</span>
+                  <strong id="premiumStatus">Free trial active</strong>
+                </div>
+              </div>
+            </div>
+            <div class="vote-card">
+              <div class="vote-board-header">
+                <h3>Crowd cheer</h3>
+                <p>Tap to cheer your team and boost the live fan pressure gauge.</p>
+              </div>
+              <div class="cheer-controls" id="cheerButtons"></div>
+              <div class="vote-summary" id="voteSummary"></div>
+            </div>
+          </div>
+          <button class="primary" id="playLofiBtn">Start Lofi Atmosphere</button>
+        </div>
+      </section>
+
+      <section class="section-panel" id="predictor">
+        <div class="section-title">
+          <span>Predictor</span>
+          <h2>AI match forecasting</h2>
+          <p>Pick two clubs, and Volleystrike AI will show who is likely to win the next clash.</p>
+        </div>
+        <div class="predictor-grid">
+          <div class="match-card">
+            <div class="match-select">
+              <div>
+                <label for="predictTeamA">Team A</label>
+                <select id="predictTeamA"></select>
+              </div>
+              <div>
+                <label for="predictTeamB">Team B</label>
+                <select id="predictTeamB"></select>
+              </div>
+            </div>
+            <button class="primary" id="predictButton">Run AI Forecast</button>
+          </div>
+          <div class="prediction-panel" id="predictionPanel">
+            <h3>Prediction</h3>
+            <p class="prediction-text">Select teams to generate a forecast.</p>
+            <div class="prediction-bars">
+              <div class="prediction-score team-a">
+                <span class="score-label" id="buttonTeamA">Team A</span>
+                <div class="bar-bg"><div class="bar-fill" id="scoreA"></div></div>
+              </div>
+              <div class="prediction-score team-b">
+                <span class="score-label" id="buttonTeamB">Team B</span>
+                <div class="bar-bg"><div class="bar-fill" id="scoreB"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-panel" id="chat">
+        <div class="section-title">
+          <span>AI Assistant</span>
+          <h2>Volleystrike chat</h2>
+          <p>Ask our chat assistant anything about team form, strategy, predictions, or league news.</p>
+        </div>
+        <div class="chat-panel">
+          <div class="chat-feed" id="chatFeed"></div>
+          <div class="chat-input-row">
+            <textarea id="chatInput" placeholder="Ask about Jamaica College, match prediction, or player stats..." rows="2"></textarea>
+            <button class="primary" id="chatSend">Send</button>
+          </div>
+        </div>
+      </section>
+      <section class="section-panel" id="livechat">
+        <div class="section-title">
+          <span>Live Community</span>
+          <h2>Live chat room</h2>
+          <p>Chat with other Volleystrike fans in real time when they are online on the site.</p>
+        </div>
+        <div class="chat-panel live-room">
+          <div class="chat-feed" id="liveFeed"></div>
+          <div class="chat-input-row">
+            <textarea id="liveInput" placeholder="Type a message for the live room..." rows="2"></textarea>
+            <button class="primary" id="liveSend">Send</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-panel" id="simulator">
+        <div class="section-title">
+          <span>Simulator</span>
+          <h2>Head-to-head match showdown</h2>
+          <p>Choose two teams and use our simulator to watch a volleystrike match unfold with possession animation.</p>
+        </div>
+        <div class="simulator-panel">
+          <div class="match-select">
+            <div>
+              <label for="simTeamA">Team A</label>
+              <select id="simTeamA"></select>
+            </div>
+            <div>
+              <label for="simTeamB">Team B</label>
+              <select id="simTeamB"></select>
+            </div>
+          </div>
+          <button class="primary" id="simulateButton">Simulate Match</button>
+          <div class="game-panel" id="gamePanel">
+            <div class="scoreboard">
+              <div class="score-team" id="scoreTeamA"><span class="team-name">A</span><span class="score-value" id="scoreValueA">0</span></div>
+              <div class="possession-display">
+                <div class="ball-icon" id="ballIcon">⚽</div>
+                <div class="possession-text" id="possessionText">Kickoff</div>
+              </div>
+              <div class="score-team" id="scoreTeamB"><span class="team-name">B</span><span class="score-value" id="scoreValueB">0</span></div>
+            </div>
+            <div class="game-log" id="gameLog">
+              <h4>Match log</h4>
+              <ul id="logList"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-panel" id="standings">
+        <div class="section-title">
+          <span>Standings</span>
+          <h2>League leaderboard</h2>
+          <p>Track every team's record, rating, and fan momentum in the Volleystrike standings.</p>
+        </div>
+        <div class="standings-table-wrap">
+          <table class="standings-table" id="standingsTable">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Record</th>
+                <th>Rating</th>
+                <th>Fan Power</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section-panel highlight-panel">
+        <div class="section-title">
+          <span>Legend</span>
+          <h2>Jamaica College & Zak Matthews</h2>
+          <p>The reigning champions and most feared player in Volleystrike. Their pace, precision, and aerial control define the league.</p>
+        </div>
+        <div class="highlight-grid">
+          <div class="hero-card">
+            <span class="small-label">Best Team</span>
+            <h3>Jamaica College</h3>
+            <p>High-octane offense, unbeatable defense, and the best ball control in Volleystrike.</p>
+          </div>
+          <div class="hero-card accent">
+            <span class="small-label">Best Player</span>
+            <h3>Zak Matthews</h3>
+            <p>A hybrid dynamo with lightning serve drops, stretch touchdowns, and clutch blocks.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Volleystrike league demo site — custom-built with team animations, match prediction, and fan mode.</p>
+      <p>© 2026 Volleystrike. Volleystrike™ is a trademark of forzakemail-oss.</p>
+      <p>Use the controls above to experience the new sport and celebrate every club.</p>
+    </footer>
+  </div>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
