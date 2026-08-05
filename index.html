@@ -20,6 +20,7 @@
       </div>
       <nav>
         <a href="#teams">Teams</a>
+        <a href="#rulebook">Rules</a>
         <a href="#predictor">Predictor</a>
         <a href="#chat">Chat</a>
         <a href="#simulator">Simulator</a>
@@ -36,7 +37,12 @@
           <p>Support your favourite club, simulate rivalries, and let AI forecast the next matchup. The best team is Jamaica College, led by Zak Matthews.</p>
           <div class="hero-buttons">
             <button class="primary" data-target="#teams">Explore Teams</button>
-            <button class="secondary" id="startPrediction">Predict a Match</button>
+            <button class="secondary" data-target="#predictor" id="startPrediction">Predict a Match</button>
+          </div>
+          <div class="hero-banner" id="heroBanner">
+            <span class="pulse-dot"></span>
+            <strong>Live pulse:</strong>
+            <span id="heroBannerText">Jamaica College remains unbeaten and fan momentum is surging.</span>
           </div>
         </div>
         <div class="hero-stats">
@@ -55,13 +61,76 @@
         </div>
       </section>
 
+      <section class="section-panel rulebook" id="rulebook">
+        <div class="section-title">
+          <span>Rulebook</span>
+          <h2>Official Volleystrike rules</h2>
+          <p>Designed to blend volleyball precision with football momentum. Every rule keeps play fair, balanced, and centered on equal skill between footwork, net timing, and teamwork.</p>
+        </div>
+        <div class="rulebook-grid" id="rulebookGrid"></div>
+      </section>
+
+      <section class="section-panel court-showcase" id="court">
+        <div class="section-title">
+          <span>Court Demo</span>
+          <h2>3D court model and AI showcase</h2>
+          <p>See the Volleystrike arena from a 3D perspective, watch how players circulate, and experience a simulated AI-hosted court walkthrough.</p>
+        </div>
+        <div class="court-grid">
+          <div class="court-visual">
+            <div class="court-scene" id="courtScene">
+              <div class="court-plane">
+                <div class="court-zone attack-zone"></div>
+                <div class="court-zone defense-zone"></div>
+                <div class="court-net"></div>
+              </div>
+            </div>
+            <div class="court-legend">
+              <div><strong>Blue</strong> = net attackers</div>
+              <div><strong>Pink</strong> = backcourt controllers</div>
+              <div><strong>White</strong> = rotating support</div>
+            </div>
+          </div>
+          <div class="ai-video-card">
+            <div class="video-screen" id="videoScreen">
+              <div class="video-frame">
+                <div class="video-avatar">
+                  <div class="avatar-head"></div>
+                  <div class="avatar-body"></div>
+                </div>
+                <div class="video-transcript" id="videoTranscript">
+                  <p>AI host ready to walk through the court layout and player flow.</p>
+                </div>
+              </div>
+              <div class="video-meta">
+                <span class="video-label">AI-generated showcase</span>
+                <span class="video-status" id="videoStatus">Ready to preview the court and players.</span>
+              </div>
+            </div>
+            <div class="video-copy">
+              <p>The AI presenter describes how Volleystrike blends football motion and volleyball positioning, while the court model animates each player's role in every rally.</p>
+              <button class="primary" id="playVideoBtn">Play AI Showcase</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section-panel" id="teams">
         <div class="section-title">
           <span>Teams</span>
-          <h2>Meet the 12 Volleystrike clubs</h2>
-          <p>Each club brings its own style, colors, and star lineup to the court.</p>
+          <h2>Meet the 24 Volleystrike clubs</h2>
+          <p>All boys teams on the left, all girls teams on the right with full player bios and club identity.</p>
         </div>
-        <div class="team-grid" id="teamGrid"></div>
+        <div class="team-section-columns">
+          <div class="team-group boys">
+            <span class="team-group-label">Boys Teams</span>
+            <div class="team-grid" id="teamGridBoys"></div>
+          </div>
+          <div class="team-group girls">
+            <span class="team-group-label">Girls Teams</span>
+            <div class="team-grid" id="teamGridGirls"></div>
+          </div>
+        </div>
       </section>
 
       <section class="section-panel fan-zone" id="fanzone">
@@ -117,7 +186,7 @@
               <div class="vote-summary" id="voteSummary"></div>
             </div>
           </div>
-          <button class="primary" id="playLofiBtn">Start Lofi Atmosphere</button>
+          <button class="primary" id="playLofiBtn">Activate Dancehall Atmosphere</button>
         </div>
       </section>
 
@@ -185,6 +254,15 @@
             <button class="primary" id="liveSend">Send</button>
           </div>
         </div>
+      </section>
+
+      <section class="section-panel" id="highlights">
+        <div class="section-title">
+          <span>Highlights</span>
+          <h2>Weekly Volleystrike moments</h2>
+          <p>See the latest live match stories, key plays, and trending fan reactions.</p>
+        </div>
+        <div class="highlight-grid" id="highlightGrid"></div>
       </section>
 
       <section class="section-panel" id="simulator">
